@@ -6,25 +6,27 @@
 <form method="POST" action="{{ url_for('criar_usuario') }}">
     <input type="hidden" name="proxima" value="{{ proxima or url_for('index') }}">
     {{ form.csrf_token() }}
-    <div class="form-group">
-        {{ form.nome.label(class="form-label") }}
-        {{ form.nome(class="form-control") }}
-    </div>
-    <div class="form-group">
-        {{ form.nickname.label(class="form-label") }}
-        {{ form.nickname(class="form-control") }}
-    </div>
-    <div class="form-group">
-        {{ form.senha.label(class="form-label") }}
-        {{ form.senha(class="form-control") }}
-    </div>
-    <div class="form-group buttons">
-        {{ form.criar(class="btn btn-primary") }}
-        <a class="btn btn-danger" href="{{ url_for('index') }}">Voltar</a>
-    </div>
-    <div class="buttons form-control">
-        <a>Já tem conta?</a>
-        <a class="buttons btn btn-primary" href="{{ url_for('login') }}">Login</a>
+    <div class="mx-auto text-center w-25">
+        <div class="form-group w-auto">
+            {{ form.nome.label(class="form-label") }}
+            {{ form.nome(class="form-control") }}
+        </div>
+        <div class="form-group w-auto">
+            {{ form.nickname.label(class="form-label") }}
+            {{ form.nickname(class="form-control") }}
+        </div>
+        <div class="form-group w-auto">
+            {{ form.senha.label(class="form-label") }}
+            {{ form.senha(class="form-control") }}
+        </div>
+        <div class="form-group buttons">
+            {{ form.criar(class="btn btn-primary") }}
+            <a class="btn btn-danger" href="{{ url_for('index') }}">Voltar</a>
+        </div>
+        <div class="buttons form-control">
+            <a>Já tem conta?</a>
+            <a class="d-block mb-2 buttons btn btn-primary" href="{{ url_for('login') }}">Login</a>
+        </div>
     </div>
 </form>
 </div>
