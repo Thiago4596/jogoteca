@@ -61,20 +61,21 @@ def atualizar():
     form = FormularioJogo(request.form)
 
     if form.validate_on_submit():
-
         jogo = Jogos.query.filter_by(id=request.form['id']).first()
+        
         jogo.nome = form.nome.data
         jogo.categoria = form.categoria.data
         jogo.console = form.console.data
 
-        db.session.add(jogo)
-        db.session.commit()
+        arquivo = request.files.get('arquivo')
+        
+        if arquivo and arquivo.filename:
+            deleta_arquivo(jogo.id) 
+            upload_path = app.config['UPLOAD_PATH']
+            timestamp = time.time()
+            arquivo.save(f'{upload_path}/capa{jogo.id}-{timestamp}.jpg')
 
-        arquivo = request.files['arquivo']
-        upload_path = app.config['UPLOAD_PATH']
-        timestamp = time.time()
-        deleta_arquivo(id)
-        arquivo.save(f'{upload_path}/capa{jogo.id}-{timestamp}.jpg')
+        db.session.commit()
 
     return redirect(url_for('index'))
 

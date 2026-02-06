@@ -21,14 +21,25 @@ class FormularioUsuario(FlaskForm):
     login = SubmitField('Login')
 
 def recupera_imagem(id):
+    # Define o prefixo que esperamos encontrar no começo do nome
+    prefixo = f'capa{id}'
+    
     for nome_arquivo in os.listdir(app.config['UPLOAD_PATH']):
-        if f'capa{id}' in nome_arquivo:
+        
+        # 1. Verifica o novo formato com timestamp: "capa2-123456.jpg"
+        if nome_arquivo.startswith(f'{prefixo}-'):
+            return nome_arquivo
+            
+        # 2. Verifica o formato antigo (caso ainda tenha imagens assim): "capa2.jpg"
+        # O ponto depois do ID garante que não confunda capa2 com capa20
+        if nome_arquivo.startswith(f'{prefixo}.'):
             return nome_arquivo
 
+    # Se não achar nada, retorna a padrão
     return 'capa_padrao.jpg'
 
 def deleta_arquivo(id):
     arquivo = recupera_imagem(id)
     if arquivo != 'capa_padrao.jpg':
-        os.remove(os.path.join(app.config['UPLOAD_PATH']), arquivo)
+        os.remove(os.path.join(app.config['UPLOAD_PATH'], arquivo))
 
