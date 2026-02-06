@@ -9,14 +9,14 @@ load_dotenv()
 # --- 1. VARIÁVEIS DE CONFIGURAÇÃO ---
 
 # Chave secreta (agora é uma variável direta, não app.config)
-SECRET_KEY = os.getenv('SECRET_KEY', 'alura')
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # Dados de conexão
-usuario = 'postgres.xwsbcqcyvvgvttdkeqrf'
-senha_bruta = '3570@Supa@3570'
-servidor = 'aws-1-us-east-2.pooler.supabase.com'
-porta = 5432 
-banco = 'postgres'
+usuario = str(os.getenv('USER'))
+senha_bruta = str(os.getenv('DB_PASSWORD'))
+servidor = str(os.getenv('SERVER'))
+porta = str(os.getenv('DOOR'))
+banco = str(os.getenv('BANK'))
 
 # Tratamento da senha para URL
 senha_safe = quote_plus(senha_bruta)
