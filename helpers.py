@@ -3,6 +3,12 @@ from jogoteca import app
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, validators
 
+class CriarUsuario(FlaskForm):
+    nickname = StringField('Nickname', [validators.DataRequired(), validators.Length(min=1, max=8)])
+    nome = StringField('Nome Completo', [validators.DataRequired(), validators.Length(min=1, max=20)])
+    senha = PasswordField('Senha', [validators.DataRequired(), validators.Length(min=1, max=100)])
+    criar = SubmitField('Criar')
+
 class FormularioJogo(FlaskForm):
     nome = StringField('Nome do Jogo', [validators.DataRequired(), validators.Length(min=1, max=50)])
     categoria = StringField('Categoria', [validators.DataRequired(), validators.Length(min=1, max=40)])
