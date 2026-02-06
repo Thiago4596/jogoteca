@@ -13,13 +13,13 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # Dados de conexão
 usuario = str(os.getenv('USER'))
-senha_bruta = str(os.getenv('DB_PASSWORD'))
+senha = str(os.getenv('DB_PASSWORD'))
 servidor = str(os.getenv('SERVER'))
 porta = str(os.getenv('DOOR'))
 banco = str(os.getenv('BANK'))
 
 # Tratamento da senha para URL
-senha_safe = quote_plus(senha_bruta)
+senha_safe = quote_plus(senha)
 
 # A URI de conexão (o Flask procura pelo nome exato 'SQLALCHEMY_DATABASE_URI')
 SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{usuario}:{senha_safe}@{servidor}:{porta}/{banco}"
