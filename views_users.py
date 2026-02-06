@@ -4,6 +4,9 @@ from models import Usuarios, db
 from helpers import FormularioUsuario, CriarUsuario
 from flask_bcrypt import check_password_hash, generate_password_hash
 
+@app.route('/')
+def opcoes():
+    return render_template('opcoes.html', titulo='Opções')
 
 @app.route('/cadastro')
 def cadastro():

@@ -1,0 +1,9 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+<div class="mx-auto w-25 p-3 border rounded">
+    <a class="btn btn-success d-block mb-2" href="{{ url_for('cadastro') }}">Cadastro</a>
+    <a class="btn btn-primary d-block" href="{{ url_for('login') }}">Login</a>
+</div>
+
+{% endblock %}

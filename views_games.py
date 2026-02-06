@@ -4,7 +4,7 @@ from models import Jogos
 from helpers import recupera_imagem, deleta_arquivo, FormularioJogo
 import time
 
-@app.route('/')
+@app.route('/lista')
 def index():
     lista = Jogos.query.order_by(Jogos.id)
     return render_template('lista.html', titulo='Jogos', jogos=lista)

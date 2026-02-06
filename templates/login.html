@@ -36,6 +36,10 @@
                 {{ form.login(class="btn btn-primary") }}
                 <a class="btn btn-danger" href="{{ url_for('index') }}">Voltar</a>
             </div>
+            <div class="buttons form-control">
+                <a>Ainda não tem conta?</a>
+                <a class="buttons btn btn-primary" href="{{ url_for('cadastro') }}">Cadastro</a>
+            </div>
         </form>
     </div>
 </body>
